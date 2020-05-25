@@ -1,0 +1,31 @@
+module test_fb(
+	input i_clk,
+	input i_DCLK,
+	input i_LP, i_SPL, i_CLS, i_SPS, i_MOD, i_VCOM,
+	input [4:0] i_R, // 5-bit Red
+	input [4:0] i_G, // 5-bit Green
+	input [4:0] i_B, // 5-bit Blue
+	
+	output wire o_wrclk,
+	output wire o_wre, 
+	output reg [15:0] o_wraddr,
+	output reg [14:0] o_data,
+	output wire [7:0] o_LED
+);
+
+assign o_wre = i_clk;
+assign o_wrclk = i_clk;
+
+reg [7:0] pixelH, pixelV, frames;
+always @ (negedge i_DCLK) begin;
+	if (pixelH > 240)
+		pixelH <= 0;
+	else
+		pixelH <= pixelH[7:0] + 8'b1;
+
+	o_wraddr[15:0] <= (pixelV * 240) + pixelH;
+end
+
+assign o_LED = pixelV;
+
+endmodule 

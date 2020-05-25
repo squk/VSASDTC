@@ -1,0 +1,12 @@
+// Gameboy Advance Framebuffer
+// ingests 15-bit RGB pixel data and inserts into RAM
+module gba_fb(
+	input i_DCLK;
+	input i_SPL, i_CLS, i_SPS, i_MOD, i_VCOM,
+	input [4:0] i_R, // 5-bit Red
+	input [4:0] i_G, // 5-bit Green
+	input [4:0] i_B, // 5-bit Blue
+	
+)
+
+wire pos_DCLK;

@@ -1,0 +1,19 @@
+module clock_div(
+	input in,
+	output out
+)
+
+parameter NTH_CLOCK = 2;
+reg [31:0] count;
+
+
+always @ (posedge in) begin
+	if (count == NTH_CLOCK - 1) begin
+		count <= 0;
+	end
+	else begin
+		count <= count + 1;
+	end
+end 
+
+endmodule
