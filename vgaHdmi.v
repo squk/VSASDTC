@@ -1,3 +1,5 @@
+`default_nettype none
+
 module vgaHdmi(
 	input i_ce25, i_clock50, i_reset,
 	
@@ -15,21 +17,21 @@ reg [9:0]pixelH, pixelV;
 initial begin
 	o_hsync      = 1;
 	o_vsync      = 1;
-	pixelH     = 0;
-	pixelV     = 0;
+	pixelH       = 0;
+	pixelV       = 0;
 	o_dataEnable = 0;
 end
 
 always @(posedge i_clock50) begin
 	if(i_reset) begin
-		 o_hsync  <= 1;
-		 o_vsync  <= 1;
+		 o_hsync <= 1;
+		 o_vsync <= 1;
 		 pixelH <= 0;
 		 pixelV <= 0;
 	end
 	else if (i_ce25) begin
 		 // Display Horizontal
-		if(pixelH==0 && pixelV!=524) begin
+		if (pixelH == 0 && pixelV != 524) begin
 			pixelH <= pixelH + 1'b1;
 			pixelV <= pixelV + 1'b1;
 			
@@ -49,14 +51,14 @@ always @(posedge i_clock50) begin
 			end
 		end
 		// Front Porch
-		else if(pixelH <= 656)pixelH <= pixelH + 1'b1;
+		else if (pixelH <= 656) pixelH <= pixelH + 1'b1;
 		// Sync Pulse
-		else if(pixelH<=752) begin
+		else if (pixelH<=752) begin
 			pixelH <= pixelH + 1'b1;
 			o_hsync <= 0;
 		end
 		// Back Porch
-		else if(pixelH < 799) begin
+		else if (pixelH < 799) begin
 			pixelH <= pixelH + 1'b1;
 			o_hsync <= 1;
 			end
@@ -86,9 +88,9 @@ always @(posedge i_clock50) begin
 			o_RGBchannel[7:0] <= {i_RGB[14:10], i_RGB[14:12]};
 		end
 		else begin
-			o_RGBchannel[23:16] <= 5'd16;
-			o_RGBchannel[15:8] <= 5'd16;
-			o_RGBchannel[7:0] <= 5'd16;
+			o_RGBchannel[23:16] <= 8'd16;
+			o_RGBchannel[15:8] <= 8'd16;
+			o_RGBchannel[7:0] <= 8'd16;
 		end
 	end
 	else o_dataEnable <= 0;

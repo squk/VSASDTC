@@ -12,6 +12,8 @@ Editor : sublime text3, tab size (2)
 -----------------------------------------------------------------------------
 */
 
+`default_nettype none
+
 module I2C_HDMI_Config (	//	Host Side
 					iCLK,
 					iRST_N,

@@ -1,3 +1,5 @@
+`default_nettype none
+
 module clock_div #(
 	parameter NTH_CLOCK = 2
 ) (

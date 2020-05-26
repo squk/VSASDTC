@@ -1,3 +1,5 @@
+`default_nettype none
+
 // Gameboy Advance Framebuffer
 // ingests 15-bit RGB pixel data and inserts into RAM
 module gba_fb(

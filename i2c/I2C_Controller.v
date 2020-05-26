@@ -53,6 +53,8 @@ Editor : sublime text3, tab size (2)
 //   V2.0 :| Joe Yang          :| 12/12/16  :|      Initial Revision
 // --------------------------------------------------------------------
 
+`default_nettype none
+
 module I2C_Controller (
 	input  CLOCK,
 	input  [23:0]I2C_DATA,	

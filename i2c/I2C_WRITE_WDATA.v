@@ -1,3 +1,5 @@
+`default_nettype none
+
 module I2C_WRITE_WDATA  (
    input  				RESET_N ,
 	input      		  	PT_CK,

@@ -1,3 +1,5 @@
+`default_nettype none
+
 //`define ENABLE_HPS
 
 module DE10_Nano_golden_top(
@@ -53,10 +55,10 @@ wire READY;
 assign reset = ~KEY[0];
 
 // audio signals
-assign HDMI_I2S0  = 1'b z;
-assign HDMI_MCLK  = 1'b z;
-assign HDMI_LRCLK = 1'b z;
-assign HDMI_SCLK  = 1'b z;
+assign HDMI_I2S   = 1'bz;
+assign HDMI_MCLK  = 1'bz;
+assign HDMI_LRCLK = 1'bz;
+assign HDMI_SCLK  = 1'bz;
 
 // **VGA CLOCK**
 clock_div #( .NTH_CLOCK(2) ) div2(
@@ -137,9 +139,9 @@ gba_fb gba_fb(
 
 // **VGA MAIN CONTROLLER**
 vgaHdmi vgaHdmi (
-	.i_ce25      (ce25),
+	.i_ce25       (ce25),
 	.i_clock50    (FPGA_CLK1_50),
-	.i_reset      (~locked),
+	.i_reset      (reset),
 	.i_RGB(hdmi_rgb),
 
 	.o_hsync      (HDMI_TX_HS),

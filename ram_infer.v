@@ -1,3 +1,5 @@
+`default_nettype none
+
 module ram_infer #(
     parameter RAM_DATA_WIDTH = 15,             // width of the data
     parameter RAM_ADDR_WIDTH = 16              // number of address bits
